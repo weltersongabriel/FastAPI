@@ -22,3 +22,5 @@ app.include_router(auth_router)
 app.include_router(order_router)
 
 # PARA RODAR O CÓDIGO -> uvicorn main:app --reload
+
+# Aula 9: 26 minutos

@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy_utils.types import ChoiceType
 
 # cria a conexao do seu banco
@@ -41,12 +41,16 @@ class Pedido(Base):
     status = Column("status", String) # pendente cancelado finalizado
     usuario = Column("usuario", ForeignKey("usuarios.id"))
     preco = Column("preco", Float)
+    itens = relationship()
 
 
     def __init__(self, usuario, status="PENDENTE", preco=0):
         self.usuario = usuario
         self.preco = preco
         self.status = status
+
+    def calcular_preco(self):
+        self.preco = 10
 
 
 # Itens Pedidos
